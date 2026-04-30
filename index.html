@@ -1413,21 +1413,21 @@ function renderPortfolio(){
 let commLikes={};try{commLikes=JSON.parse(localStorage.getItem('pickr-comm-likes')||'{}');}catch(e){commLikes={};}
 let commPosts=[];try{commPosts=JSON.parse(localStorage.getItem('pickr-comm-posts')||'[]');}catch(e){commPosts=[];}
 
-function _placeholder(hex,emoji){
-  const s=`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="${hex}"/><text x="200" y="175" text-anchor="middle" font-size="90" font-family="sans-serif">${emoji}</text></svg>`;
-  return 'data:image/svg+xml;base64,'+btoa(unescape(encodeURIComponent(s)));
+function _placeholder(hex){
+  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="'+hex+'"/></svg>');
 }
 
-const SEED_POSTS=[
-  {id:'s1',user:'vinylvault_uk',location:'Manchester',item:'The Beatles White Album 1968 UK Press',category:'Vinyl',paid:3,soldFor:87,profit:79,daysToSell:4,likes:34,img:_placeholder('#1A2A1A','🎵'),platform:'Discogs',ts:Date.now()-2*3600000},
-  {id:'s2',user:'cardkings_london',location:'London',item:'Charizard Holo 1st Edition Base Set PSA 8',category:'Cards',paid:120,soldFor:640,profit:490,daysToSell:2,likes:89,img:_placeholder('#1A1A2A','🃏'),platform:'eBay',ts:Date.now()-5*3600000},
-  {id:'s3',user:'kickflips_notts',location:'Nottingham',item:'Nike Air Max 90 OG 2003 DS UK8',category:'Trainers',paid:22,soldFor:135,profit:106,daysToSell:6,likes:51,img:_placeholder('#2A1A1A','👟'),platform:'StockX',ts:Date.now()-8*3600000},
-  {id:'s4',user:'thriftmaster_brum',location:'Birmingham',item:'Ralph Lauren Polo Bear Knit Sweater M',category:'Clothing',paid:4,soldFor:68,profit:58,daysToSell:9,likes:27,img:_placeholder('#2A2A1A','🧥'),platform:'Depop',ts:Date.now()-11*3600000},
-  {id:'s5',user:'rare_spins_bris',location:'Bristol',item:'David Bowie Ziggy Stardust 1st Press RCA',category:'Vinyl',paid:8,soldFor:52,profit:40,daysToSell:3,likes:18,img:_placeholder('#1E2A1E','🎶'),platform:'Discogs',ts:Date.now()-16*3600000},
-  {id:'s6',user:'boxfresh_leeds',location:'Leeds',item:'Adidas Samba OG White DS UK9',category:'Trainers',paid:85,soldFor:155,profit:59,daysToSell:1,likes:63,img:_placeholder('#1A2A2A','👟'),platform:'eBay',ts:Date.now()-20*3600000},
-  {id:'s7',user:'depop_digs',location:'Glasgow',item:'Carhartt WIP Detroit Jacket Black L',category:'Clothing',paid:12,soldFor:89,profit:72,daysToSell:5,likes:41,img:_placeholder('#221A2A','🧤'),platform:'Depop',ts:Date.now()-24*3600000},
-  {id:'s8',user:'mtg_hunter',location:'Edinburgh',item:'Black Lotus Alpha MTG Near Mint',category:'Cards',paid:200,soldFor:980,profit:740,daysToSell:3,likes:112,img:_placeholder('#1A221A','✨'),platform:'eBay',ts:Date.now()-28*3600000},
-];
+let SEED_POSTS=[];
+try{SEED_POSTS=[
+  {id:'s1',user:'vinylvault_uk',location:'Manchester',item:'The Beatles White Album 1968 UK Press',category:'Vinyl',paid:3,soldFor:87,profit:79,daysToSell:4,likes:34,img:_placeholder('#1A2A1A'),platform:'Discogs',ts:Date.now()-2*3600000},
+  {id:'s2',user:'cardkings_london',location:'London',item:'Charizard Holo 1st Edition Base Set PSA 8',category:'Cards',paid:120,soldFor:640,profit:490,daysToSell:2,likes:89,img:_placeholder('#1A1A2A'),platform:'eBay',ts:Date.now()-5*3600000},
+  {id:'s3',user:'kickflips_notts',location:'Nottingham',item:'Nike Air Max 90 OG 2003 DS UK8',category:'Trainers',paid:22,soldFor:135,profit:106,daysToSell:6,likes:51,img:_placeholder('#3A1A1A'),platform:'StockX',ts:Date.now()-8*3600000},
+  {id:'s4',user:'thriftmaster_brum',location:'Birmingham',item:'Ralph Lauren Polo Bear Knit Sweater M',category:'Clothing',paid:4,soldFor:68,profit:58,daysToSell:9,likes:27,img:_placeholder('#2A2010'),platform:'Depop',ts:Date.now()-11*3600000},
+  {id:'s5',user:'rare_spins_bris',location:'Bristol',item:'David Bowie Ziggy Stardust 1st Press RCA',category:'Vinyl',paid:8,soldFor:52,profit:40,daysToSell:3,likes:18,img:_placeholder('#1E2A1E'),platform:'Discogs',ts:Date.now()-16*3600000},
+  {id:'s6',user:'boxfresh_leeds',location:'Leeds',item:'Adidas Samba OG White DS UK9',category:'Trainers',paid:85,soldFor:155,profit:59,daysToSell:1,likes:63,img:_placeholder('#1A2A2A'),platform:'eBay',ts:Date.now()-20*3600000},
+  {id:'s7',user:'depop_digs',location:'Glasgow',item:'Carhartt WIP Detroit Jacket Black L',category:'Clothing',paid:12,soldFor:89,profit:72,daysToSell:5,likes:41,img:_placeholder('#221A2A'),platform:'Depop',ts:Date.now()-24*3600000},
+  {id:'s8',user:'mtg_hunter',location:'Edinburgh',item:'Black Lotus Alpha MTG Near Mint',category:'Cards',paid:200,soldFor:980,profit:740,daysToSell:3,likes:112,img:_placeholder('#1A221A'),platform:'eBay',ts:Date.now()-28*3600000},
+];}catch(e){}
 
 function _allPosts(){return[...commPosts,...SEED_POSTS];}
 function _saveCommLikes(){try{localStorage.setItem('pickr-comm-likes',JSON.stringify(commLikes));}catch(e){}}
@@ -1452,7 +1452,7 @@ function renderCommunity(filter){
   const el=document.getElementById('comm-feed');if(!el)return;
   if(!posts.length){el.innerHTML='<div style="padding:20px 0;text-align:center;color:var(--text3);font-size:13px;">No posts yet — be the first to share!</div>';return;}
 
-  el.innerHTML=posts.map(p=>{
+  try{el.innerHTML=posts.map(p=>{
     const liked=!!commLikes[p.id];
     const likeCount=(p.likes||0)+(liked?1:0);
     const roi=p.paid>0?Math.round(p.soldFor/p.paid):0;
@@ -1486,7 +1486,7 @@ function renderCommunity(filter){
         </div>
       </div>
     </div>`;
-  }).join('');
+  }).join('');}catch(e){el.innerHTML='<div style="padding:20px 0;text-align:center;color:var(--text3);font-size:13px;">Could not load feed.</div>';}
 }
 
 function filterCommunity(filter,btn){
