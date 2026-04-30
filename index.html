@@ -276,6 +276,49 @@ canvas#canvas{display:none;}
 .tag-svg-sm{width:14px;height:14px;}
 .tag-svg-md{width:18px;height:18px;}
 .tag-svg-lg{width:22px;height:22px;}
+
+/* COMMUNITY */
+.comm-banner{margin:14px 14px 10px;background:var(--green-dark);border-radius:var(--rlg);padding:14px 16px;display:flex;align-items:center;gap:14px;}
+.comm-banner-thumb{width:72px;height:72px;border-radius:var(--r);overflow:hidden;flex-shrink:0;background:rgba(255,255,255,0.08);}
+.comm-banner-thumb img{width:100%;height:100%;object-fit:cover;}
+.comm-banner-label{font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.35);margin-bottom:3px;}
+.comm-banner-name{font-size:12px;font-weight:500;color:rgba(255,255,255,0.8);line-height:1.3;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.comm-banner-profit{font-family:'DM Mono',monospace;font-size:30px;font-weight:500;color:#97C459;letter-spacing:-0.5px;line-height:1;margin-bottom:2px;}
+.comm-banner-sub{font-size:10px;color:rgba(255,255,255,0.25);}
+.comm-chips{display:flex;gap:5px;padding:0 14px 10px;overflow-x:auto;scrollbar-width:none;}
+.comm-chips::-webkit-scrollbar{display:none;}
+.comm-chip{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:500;border:0.5px solid var(--border-mid);background:var(--surface);color:var(--text2);cursor:pointer;white-space:nowrap;font-family:inherit;flex-shrink:0;}
+.comm-chip.on{background:var(--green);color:#fff;border-color:var(--green);}
+.comm-feed{padding:0 14px 10px;}
+.comm-post{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--rlg);margin-bottom:10px;overflow:hidden;}
+.comm-img-wrap{position:relative;}
+.comm-img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--surface2);display:block;}
+.comm-profit-overlay{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.65);border-radius:8px;padding:7px 10px;backdrop-filter:blur(6px);}
+.comm-profit-num{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:#97C459;line-height:1;}
+.comm-profit-lbl{font-size:9px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.comm-cat-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.55);border-radius:20px;padding:3px 9px;backdrop-filter:blur(4px);}
+.comm-cat-lbl{font-size:9px;font-weight:500;color:rgba(255,255,255,0.85);}
+.comm-post-body{padding:10px 12px 6px;}
+.comm-post-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.comm-post-meta{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:5px;}
+.comm-post-actions{display:flex;align-items:center;justify-content:space-between;padding:6px 12px 10px;}
+.like-btn{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:8px;border:0.5px solid var(--border-mid);background:none;cursor:pointer;font-family:inherit;font-size:12px;color:var(--text2);}
+.like-btn.liked{background:var(--red-bg);border-color:var(--red-bd);color:var(--red);}
+.comm-stats-row{display:flex;gap:8px;}
+.comm-mini-stat{font-size:10px;color:var(--text3);}
+/* SHARE MODAL */
+.share-modal{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.45);align-items:flex-end;}
+.share-modal.on{display:flex;}
+.share-sheet{background:var(--surface);border-radius:20px 20px 0 0;width:100%;max-height:75vh;overflow-y:auto;padding-bottom:40px;}
+.share-hdr{padding:16px 18px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1;}
+.share-hdr-title{font-size:14px;font-weight:500;color:var(--text);}
+.share-close-btn{width:30px;height:30px;border-radius:var(--r);background:var(--surface2);border:none;cursor:pointer;font-size:16px;color:var(--text2);display:flex;align-items:center;justify-content:center;}
+.share-item{display:flex;align-items:center;gap:11px;padding:11px 18px;border-bottom:0.5px solid var(--border);cursor:pointer;}
+.share-item:last-child{border-bottom:none;}
+.share-item-thumb{width:48px;height:48px;border-radius:var(--r);background:var(--surface2);overflow:hidden;flex-shrink:0;}
+.share-item-thumb img{width:100%;height:100%;object-fit:cover;}
+.share-item-name{font-size:13px;font-weight:500;color:var(--text);}
+.share-item-meta{font-size:11px;color:var(--text3);margin-top:2px;}
 </style>
 </head>
 <body>
@@ -360,6 +403,57 @@ canvas#canvas{display:none;}
 <div id="p-portfolio" class="page">
   <div style="padding:18px 18px 12px;"><div style="font-size:19px;font-weight:500;letter-spacing:-0.4px;">Portfolio</div></div>
   <div id="portfolio-list"><div style="padding:20px 14px;text-align:center;color:var(--text3);font-size:13px;">No items yet</div></div>
+</div>
+
+<!-- COMMUNITY -->
+<div id="p-community" class="page">
+  <div style="padding:18px 18px 10px;display:flex;align-items:baseline;justify-content:space-between;">
+    <div style="font-size:19px;font-weight:500;letter-spacing:-0.4px;">Community</div>
+    <div style="font-size:10px;font-weight:500;color:var(--green);letter-spacing:0.05em;background:var(--green-bg);padding:2px 8px;border-radius:10px;">LIVE</div>
+  </div>
+
+  <!-- BEST FLIP BANNER -->
+  <div class="comm-banner">
+    <div class="comm-banner-thumb" id="comm-best-thumb"></div>
+    <div style="flex:1;min-width:0;">
+      <div class="comm-banner-label">Best flip today</div>
+      <div class="comm-banner-name" id="comm-best-name">—</div>
+      <div class="comm-banner-profit" id="comm-best-profit">—</div>
+      <div class="comm-banner-sub" id="comm-best-sub">—</div>
+    </div>
+  </div>
+
+  <!-- FILTER CHIPS -->
+  <div class="comm-chips">
+    <button class="comm-chip on" onclick="filterCommunity('All',this)">All</button>
+    <button class="comm-chip" onclick="filterCommunity('Near me',this)">Near me</button>
+    <button class="comm-chip" onclick="filterCommunity('Vinyl',this)">Vinyl</button>
+    <button class="comm-chip" onclick="filterCommunity('Cards',this)">Cards</button>
+    <button class="comm-chip" onclick="filterCommunity('Trainers',this)">Trainers</button>
+    <button class="comm-chip" onclick="filterCommunity('Clothing',this)">Clothing</button>
+  </div>
+
+  <!-- FEED -->
+  <div class="comm-feed" id="comm-feed"></div>
+
+  <!-- SHARE BUTTON -->
+  <div style="padding:0 14px 12px;">
+    <button class="btn-p" onclick="openShareModal()" style="display:flex;align-items:center;justify-content:center;gap:8px;">
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M10 13V3M10 3L6 7M10 3l4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 13v2a2 2 0 002 2h10a2 2 0 002-2v-2" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Share your flip
+    </button>
+  </div>
+</div>
+
+<!-- SHARE FLIP MODAL -->
+<div class="share-modal" id="share-modal" onclick="if(event.target===this)closeShareModal()">
+  <div class="share-sheet">
+    <div class="share-hdr">
+      <div class="share-hdr-title">Share a flip</div>
+      <button class="share-close-btn" onclick="closeShareModal()">✕</button>
+    </div>
+    <div id="share-items-list"></div>
+  </div>
 </div>
 
 <!-- CAMERA -->
@@ -453,7 +547,7 @@ canvas#canvas{display:none;}
     <div class="nav-icon" id="ni-portfolio"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="6" height="6" rx="1" stroke="#A8B0A8" stroke-width="1.3" fill="none"/><rect x="11" y="3" width="6" height="6" rx="1" stroke="#A8B0A8" stroke-width="1.3" fill="none"/><rect x="3" y="11" width="6" height="6" rx="1" stroke="#A8B0A8" stroke-width="1.3" fill="none"/><rect x="11" y="11" width="6" height="6" rx="1" stroke="#A8B0A8" stroke-width="1.3" fill="none"/></svg></div>
     <span class="nav-lbl" id="nl-portfolio">Portfolio</span>
   </button>
-  <button class="nav-tab" id="nt-community">
+  <button class="nav-tab" id="nt-community" onclick="showPage('community',this);renderCommunity()">
     <div class="nav-icon" id="ni-community"><svg width="14" height="14" viewBox="0 0 20 20" fill="none"><circle cx="7" cy="8" r="3" stroke="#A8B0A8" stroke-width="1.3" fill="none"/><circle cx="13" cy="8" r="3" stroke="#A8B0A8" stroke-width="1.3" fill="none"/><path d="M1 17c0-2.8 2.7-5 6-5" stroke="#A8B0A8" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M19 17c0-2.8-2.7-5-6-5" stroke="#A8B0A8" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></div>
     <span class="nav-lbl" id="nl-community">Community</span>
   </button>
@@ -1313,6 +1407,143 @@ function renderPortfolio(){
       ${bestFlipsHTML}
     </div>
   `;
+}
+
+// COMMUNITY
+let commLikes={};try{commLikes=JSON.parse(localStorage.getItem('pickr-comm-likes')||'{}');}catch(e){commLikes={};}
+let commPosts=[];try{commPosts=JSON.parse(localStorage.getItem('pickr-comm-posts')||'[]');}catch(e){commPosts=[];}
+
+function _placeholder(hex,emoji){
+  const s=`<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="${hex}"/><text x="200" y="175" text-anchor="middle" font-size="90" font-family="sans-serif">${emoji}</text></svg>`;
+  return 'data:image/svg+xml;base64,'+btoa(unescape(encodeURIComponent(s)));
+}
+
+const SEED_POSTS=[
+  {id:'s1',user:'vinylvault_uk',location:'Manchester',item:'The Beatles White Album 1968 UK Press',category:'Vinyl',paid:3,soldFor:87,profit:79,daysToSell:4,likes:34,img:_placeholder('#1A2A1A','🎵'),platform:'Discogs',ts:Date.now()-2*3600000},
+  {id:'s2',user:'cardkings_london',location:'London',item:'Charizard Holo 1st Edition Base Set PSA 8',category:'Cards',paid:120,soldFor:640,profit:490,daysToSell:2,likes:89,img:_placeholder('#1A1A2A','🃏'),platform:'eBay',ts:Date.now()-5*3600000},
+  {id:'s3',user:'kickflips_notts',location:'Nottingham',item:'Nike Air Max 90 OG 2003 DS UK8',category:'Trainers',paid:22,soldFor:135,profit:106,daysToSell:6,likes:51,img:_placeholder('#2A1A1A','👟'),platform:'StockX',ts:Date.now()-8*3600000},
+  {id:'s4',user:'thriftmaster_brum',location:'Birmingham',item:'Ralph Lauren Polo Bear Knit Sweater M',category:'Clothing',paid:4,soldFor:68,profit:58,daysToSell:9,likes:27,img:_placeholder('#2A2A1A','🧥'),platform:'Depop',ts:Date.now()-11*3600000},
+  {id:'s5',user:'rare_spins_bris',location:'Bristol',item:'David Bowie Ziggy Stardust 1st Press RCA',category:'Vinyl',paid:8,soldFor:52,profit:40,daysToSell:3,likes:18,img:_placeholder('#1E2A1E','🎶'),platform:'Discogs',ts:Date.now()-16*3600000},
+  {id:'s6',user:'boxfresh_leeds',location:'Leeds',item:'Adidas Samba OG White DS UK9',category:'Trainers',paid:85,soldFor:155,profit:59,daysToSell:1,likes:63,img:_placeholder('#1A2A2A','👟'),platform:'eBay',ts:Date.now()-20*3600000},
+  {id:'s7',user:'depop_digs',location:'Glasgow',item:'Carhartt WIP Detroit Jacket Black L',category:'Clothing',paid:12,soldFor:89,profit:72,daysToSell:5,likes:41,img:_placeholder('#221A2A','🧤'),platform:'Depop',ts:Date.now()-24*3600000},
+  {id:'s8',user:'mtg_hunter',location:'Edinburgh',item:'Black Lotus Alpha MTG Near Mint',category:'Cards',paid:200,soldFor:980,profit:740,daysToSell:3,likes:112,img:_placeholder('#1A221A','✨'),platform:'eBay',ts:Date.now()-28*3600000},
+];
+
+function _allPosts(){return[...commPosts,...SEED_POSTS];}
+function _saveCommLikes(){try{localStorage.setItem('pickr-comm-likes',JSON.stringify(commLikes));}catch(e){}}
+function _saveCommPosts(){try{localStorage.setItem('pickr-comm-posts',JSON.stringify(commPosts.slice(0,30)));}catch(e){}}
+
+function renderCommunity(filter){
+  filter=filter||'All';
+  const posts=_allPosts().filter(p=>filter==='All'||filter==='Near me'||p.category===filter);
+
+  // Best flip banner (top profit within last 24h, fallback to all-time)
+  const today=_allPosts().filter(p=>(Date.now()-p.ts)<86400000).sort((a,b)=>b.profit-a.profit);
+  const best=today[0]||_allPosts().sort((a,b)=>b.profit-a.profit)[0];
+  if(best){
+    const bt=document.getElementById('comm-best-thumb');
+    if(bt)bt.innerHTML=`<img src="${best.img}" style="width:100%;height:100%;object-fit:cover;" alt=""/>`;
+    const s=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+    s('comm-best-name',best.item);
+    s('comm-best-profit','+£'+best.profit);
+    s('comm-best-sub','@'+best.user+' · paid £'+best.paid+', sold £'+best.soldFor);
+  }
+
+  const el=document.getElementById('comm-feed');if(!el)return;
+  if(!posts.length){el.innerHTML='<div style="padding:20px 0;text-align:center;color:var(--text3);font-size:13px;">No posts yet — be the first to share!</div>';return;}
+
+  el.innerHTML=posts.map(p=>{
+    const liked=!!commLikes[p.id];
+    const likeCount=(p.likes||0)+(liked?1:0);
+    const roi=p.paid>0?Math.round(p.soldFor/p.paid):0;
+    const roiStr=roi>1?roi+'x ROI':p.platform;
+    return `<div class="comm-post" data-cat="${p.category}">
+      <div class="comm-img-wrap">
+        <img class="comm-img" src="${p.img}" alt="${p.item}" loading="lazy"/>
+        <div class="comm-profit-overlay">
+          <div class="comm-profit-num">+£${p.profit}</div>
+          <div class="comm-profit-lbl">${roiStr}</div>
+        </div>
+        <div class="comm-cat-badge"><span class="comm-cat-lbl">${p.category}</span></div>
+      </div>
+      <div class="comm-post-body">
+        <div class="comm-post-name">${p.item}</div>
+        <div class="comm-post-meta">
+          <span style="font-weight:500;color:var(--text2);">@${p.user}</span>
+          <span>·</span><span>${p.location}</span>
+          <span>·</span><span>${timeAgo(new Date(p.ts).toISOString())}</span>
+        </div>
+      </div>
+      <div class="comm-post-actions">
+        <button class="like-btn${liked?' liked':''}" id="like-${p.id}" onclick="toggleCommLike('${p.id}',${p.likes||0})">
+          <svg width="12" height="12" viewBox="0 0 20 20" fill="${liked?'currentColor':'none'}"><path d="M10 17s-7-4.35-7-9a4 4 0 018 0 4 4 0 018 0c0 4.65-7 9-7 9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <span id="lc-${p.id}">${likeCount}</span>
+        </button>
+        <div class="comm-stats-row">
+          <span class="comm-mini-stat">£${p.paid} → £${p.soldFor}</span>
+          <span class="comm-mini-stat">·</span>
+          <span class="comm-mini-stat">${p.daysToSell}d to sell</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterCommunity(filter,btn){
+  document.querySelectorAll('.comm-chip').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');
+  renderCommunity(filter);
+}
+
+function toggleCommLike(postId,baseLikes){
+  const wasLiked=!!commLikes[postId];
+  commLikes[postId]=!wasLiked;
+  _saveCommLikes();
+  const btn=document.getElementById('like-'+postId);
+  const cnt=document.getElementById('lc-'+postId);
+  if(btn)btn.classList.toggle('liked',!wasLiked);
+  if(cnt)cnt.textContent=baseLikes+(!wasLiked?1:0);
+  const path=btn?.querySelector('path');
+  if(path)path.setAttribute('fill',!wasLiked?'currentColor':'none');
+}
+
+function openShareModal(){
+  const shareable=scans.filter(s=>s.status==='sold'||s.status==='listed');
+  const el=document.getElementById('share-items-list');if(!el)return;
+  if(!shareable.length){
+    el.innerHTML='<div style="padding:28px 18px;text-align:center;color:var(--text3);font-size:13px;line-height:1.6;">No sold or listed items yet.<br/>Complete a flip to share it with the community!</div>';
+  }else{
+    el.innerHTML=shareable.map(s=>{
+      const ri=scans.indexOf(s);
+      const profit=s.finalProfit!=null?s.finalProfit:Math.round((s.soldFor||s.listFor||s.data.avg_sold)-((s.soldFor||s.listFor||s.data.avg_sold)*0.128)-(s.paidFor||0));
+      const meta=s.status==='sold'?'+£'+profit+' profit · '+s.data.category:'£'+(s.listFor||s.data.avg_sold)+' listed · '+s.data.category;
+      return `<div class="share-item" onclick="shareToFeed(${ri})">
+        <div class="share-item-thumb"><img src="${s.imageData}" alt=""/></div>
+        <div style="flex:1;"><div class="share-item-name">${s.data.item_name}</div><div class="share-item-meta">${meta}</div></div>
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M8 4l5 6-5 6" stroke="var(--text3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('share-modal').classList.add('on');
+}
+
+function closeShareModal(){document.getElementById('share-modal').classList.remove('on');}
+
+function shareToFeed(scanIdx){
+  const s=scans[scanIdx];if(!s)return;
+  const soldAmt=s.soldFor||s.listFor||s.data.avg_sold;
+  const profit=s.finalProfit!=null?s.finalProfit:Math.max(0,Math.round(soldAmt-(soldAmt*0.128)-(s.paidFor||0)));
+  commPosts.unshift({
+    id:'user-'+s.id,user:'you',location:'Your area',
+    item:s.data.item_name,category:s.data.category,
+    paid:s.paidFor||0,soldFor:soldAmt,profit,
+    daysToSell:s.daysToSell||7,likes:0,
+    img:s.imageData,platform:s.data.best_platform||'eBay',ts:Date.now()
+  });
+  _saveCommPosts();
+  closeShareModal();
+  showToast('Flip shared to the community! 🎉');
+  renderCommunity();
 }
 
 // INIT
